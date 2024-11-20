@@ -43,7 +43,7 @@ const updateStats = (data) => {
 }
 
 const updateSprite = (src) => {
-    spriteContainer.innerHTML = `<img id="sprite" src="${src}" alt="sprite">`
+    spriteContainer.innerHTML = `<img id="sprite" src="${src}" alt="sprite" class="pokemon-sprite">`
 }
 
 const clearTypes = () => {
