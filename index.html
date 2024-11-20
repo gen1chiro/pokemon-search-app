@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/82b12ac003.js" crossorigin="anonymous"></script>
     <title>Pokemon Search App</title>
 </head>
 <body>
-    <label for="search-input">Enter name or id of pokemon</label>
-    <input id="search-input" type="text" required>
-    <button id="search-button">Search</button>
-    <div class="info-container">
-        <p id="pokemon-name"></p>
-        <p id="pokemon-id"></p>
+    <main class="container">
+        <div class="input-container">
+            <label for="search-input">Enter name or id of pokemon</label>
+            <div class="input-button-container">
+                <input id="search-input" type="text" required>
+                <div class="button">
+                    <button id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+        </div>
         <div id="sprite-container"></div>
-        <p id="weight"></p>
-        <p id="height"></p>
-        <p id="types"></p>
-        <p id="hp"></p>
-        <p id="attack"></p>
-        <p id="defense"></p>
-        <p id="special-attack"></p>
-        <p id="special-defense"></p>
-        <p id="speed"></p>
-    </div>
-<script src="script.js"></script>
+        <div class="name-container">
+            <p id="pokemon-name"></p>
+            <p id="pokemon-id"></p>
+        </div>
+        <div class="type-container">
+            <p id="types"></p>
+        </div>
+        <div class="info-container">
+            <p id="weight"></p>
+            <p id="height"></p>
+            <p id="hp"></p>
+            <p id="attack"></p>
+            <p id="defense"></p>
+            <p id="special-attack"></p>
+            <p id="special-defense"></p>
+            <p id="speed"></p>
+        </div>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
