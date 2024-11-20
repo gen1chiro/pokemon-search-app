@@ -1,5 +1,5 @@
 :root {
-    --gray: #dcdcdc;
+    --white: #F0F8FF;
     --darkgray: #9f9f9f;
 }
 
@@ -12,11 +12,87 @@
 body {
     width: 100vw;
     height: 100vh;
-    font-family: helvitica, sans-serif;
+    font-family: "san-francisco pro", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--gray);
+    background-color: white;
+}
+
+.normal {
+    background: linear-gradient(135deg, #d4d4c5, #f2f2e4);
+}
+
+.fire {
+    background: linear-gradient(135deg, #ff9c7c, #ffd0b0);
+}
+
+.water {
+    background: linear-gradient(135deg, #6fbdf5, #a5d9fa);
+}
+
+.electric {
+    background: linear-gradient(135deg, #ffd066, #fff3b0);
+}
+
+.grass {
+    background: linear-gradient(135deg, #8ddc6e, #c3eaa5);
+}
+
+.ice {
+    background: linear-gradient(135deg, #85d7f5, #c2eefa);
+}
+
+.fighting {
+    background: linear-gradient(135deg, #e59c8b, #f7c3b5);
+}
+
+.poison {
+    background: linear-gradient(135deg, #d3a2cb, #efc9e1);
+}
+
+.ground {
+    background: linear-gradient(135deg, #e6c583, #f8e1b5);
+}
+
+.flying {
+    background: linear-gradient(135deg, #a3b5f5, #d0d8fa);
+}
+
+.psychic {
+    background: linear-gradient(135deg, #ff8ba9, #ffbed4);
+}
+
+.bug {
+    background: linear-gradient(135deg, #c3d264, #e2ebb5);
+}
+
+.rock {
+    background: linear-gradient(135deg, #c1b391, #e2d9ba);
+}
+
+.ghost {
+    background: linear-gradient(135deg, #b2abd8, #dcd4ee);
+}
+
+.dragon {
+    background: linear-gradient(135deg, #a99af5, #d3c7fa);
+}
+
+.dark {
+    background: linear-gradient(135deg, #c1a394, #e0c6b6);
+}
+
+.steel {
+    background: linear-gradient(135deg, #c5c5d1, #ececf0);
+}
+
+.fairy {
+    background: linear-gradient(135deg, #f3aaf3, #f9d3f9);
+}
+
+.base {
+    background-color: var(--white);
 }
 
 .container {
@@ -29,31 +105,50 @@ body {
     min-height: 500px;
     max-height: 800px;
     border-radius: 30px;
-    padding: 20px;
     background-color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px
+    , rgba(0, 0, 0, 0.12) 0 -12px 30px
+    , rgba(0, 0, 0, 0.12) 0 4px 6px
+    , rgba(0, 0, 0, 0.17) 0 12px 13px
+    , rgba(0, 0, 0, 0.09) 0 -3px 5px;
+}
+
+.upper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 50%;
+    width: 100%;
+    border-radius: 30px 30px 30% 30%;
+    padding: 20px;
+}
+
+.lower {
+    height: 50%;
+    width: 100%;
+    padding: 10px 20px 30px 30px;
 }
 
 .input-container {
     display: flex;
     flex-direction: column;
-    height: 15%;
+    height: 30%;
     width: 100%;
     border-radius: 10px;
     align-items: center;
     justify-content: center;
     row-gap: .5em;
-    background: white;
+    background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1;
 }
 
 .input-button-container {
     display: flex;
-    width: 70%;
-    height: 35px;
+    width: 65%;
+    height: 25px;
     border: 2px solid var(--darkgray);
     border-radius: 20px;
     justify-content: center;
@@ -88,8 +183,54 @@ body {
     border-radius: 50%;
 }
 
+#sprite-container {
+    display: flex;
+    justify-content: center;
+    height: 70%;
+    width: 100%;
+    z-index: 0;
+}
+
 .pokemon-sprite {
     filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.5));
-    width: 250px;
+    width: auto;
     aspect-ratio: 1/1;
+    transform: scale(1.5);
+}
+
+#pokemon-name {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#pokemon-id {
+    font-weight: lighter;
+    font-size: .9em;
+}
+
+#types {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    column-gap: .5em;
+    padding: 10px 0;
+}
+
+.type {
+    padding: 5px 20px;
+    border-radius: 15px;
+}
+
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.info-container > div > p {
+    height: 1em;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
 }
