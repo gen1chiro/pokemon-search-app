@@ -59,14 +59,14 @@ const updateColorBasedOnType = (element, type) => {
 const clearUi = () => {
     pokemonName.textContent = "";
     pokemonId.textContent = "";
-    weight.textContent = "";
-    height.textContent = "";
-    hp.textContent = "";
-    attack.textContent = "";
-    defense.textContent = "";
-    specialAttack.textContent = "";
-    specialDefense.textContent = "";
-    speed.textContent = "";
+    weight.textContent = "-";
+    height.textContent = "-";
+    hp.textContent = "-";
+    attack.textContent = "-";
+    defense.textContent = "-";
+    specialAttack.textContent = "-";
+    specialDefense.textContent = "-";
+    speed.textContent = "-";
     spriteContainer.innerHTML = "";
 }
 
