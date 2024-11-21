@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --white: #F0F8FF;
     --darkgray: #9f9f9f;
+    --text: #333333;
 }
 
 * {
@@ -10,13 +13,17 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: auto;
     font-family: "san-francisco pro", sans-serif;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    row-gap: 1em;
     background-color: white;
+    color: var(--text);
+    padding: 2em;
 }
 
 .normal {
@@ -95,15 +102,18 @@ body {
     background-color: var(--white);
 }
 
+.header {
+    font-family: poppins, sans-serif;
+    font-size: 2em;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     width: 30vw;
     min-width: 350px;
     max-width: 400px;
-    height: 90vh;
-    min-height: 500px;
-    max-height: 800px;
+    height: 700px;
     border-radius: 30px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px
@@ -126,7 +136,7 @@ body {
 .lower {
     height: 50%;
     width: 100%;
-    padding: 10px 20px 30px 30px;
+    padding: 10px 20px 10px 20px;
 }
 
 .input-container {
@@ -198,6 +208,10 @@ body {
     transform: scale(1.5);
 }
 
+.name-container {
+    height: 15%;
+}
+
 #pokemon-name {
     font-weight: bold;
     font-size: 1.5em;
@@ -209,11 +223,12 @@ body {
 }
 
 #types {
+    height: 10%;
     width: 100%;
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
     column-gap: .5em;
-    padding: 10px 0;
 }
 
 .type {
@@ -222,15 +237,51 @@ body {
 }
 
 .info-container {
+    height: 75%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 10px;
+    padding-top: 1em;
+}
+
+.stat-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    font-size: 0.8em;
+    font-weight: lighter;
 }
 
 .info-container > div > p {
-    height: 1em;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.7em;
+    font-size: 1.2em;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+}
+
+.stack-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5em;
+    align-items: center;
+    width: 350px;
+}
+
+.stack-container p {
+    font-weight: lighter;
+    font-size: 1em;
+}
+
+.icon-container {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+}
+
+.icon {
+    font-size: 2em;
 }
