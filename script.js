@@ -4,8 +4,8 @@ const spriteContainer = document.getElementById("sprite-container");
 const upperContainer = document.querySelector(".upper");
 const pokemonName = document.getElementById("pokemon-name");
 const pokemonId = document.getElementById("pokemon-id");
-const weight = document.getElementById("weight");
-const height = document.getElementById("height");
+const pokemonWeight = document.getElementById("weight");
+const pokemonHeight = document.getElementById("height");
 const types = document.getElementById("types");
 const hp = document.getElementById("hp");
 const attack = document.getElementById("attack");
@@ -28,17 +28,31 @@ const fetchData = async (input) => {
 }
 
 const updateStats = (data) => {
-    pokemonName.textContent = data.name.charAt(0).toUpperCase() + data.name.slice(1);
-    pokemonId.textContent = `NO. ${data.id}`;
-    weight.textContent = data.weight;
-    height.textContent = data.height;
-    updateSprite(data.sprites.front_default);
-    hp.textContent = data.stats[0].base_stat;
-    attack.textContent = data.stats[1].base_stat;
-    defense.textContent = data.stats[2].base_stat;
-    specialAttack.textContent = data.stats[3].base_stat;
-    specialDefense.textContent = data.stats[4].base_stat;
-    speed.textContent = data.stats[5].base_stat;
+    const { name,
+            id,
+            weight,
+            height,
+            sprites,
+            stats } = data
+
+    const [ hpD,
+            attackD,
+            defenseD,
+            specialAttackD,
+            specialDefenseD,
+            speedD ] = stats
+
+    pokemonName.textContent = name.charAt(0).toUpperCase() + data.name.slice(1);
+    pokemonId.textContent = `NO. ${id}`;
+    pokemonWeight.textContent = weight;
+    pokemonHeight.textContent = height;
+    updateSprite(sprites.front_default);
+    hp.textContent = hpD.base_stat;
+    attack.textContent = attackD.base_stat;
+    defense.textContent = defenseD.base_stat;
+    specialAttack.textContent = specialAttackD.base_stat;
+    specialDefense.textContent = specialDefenseD.base_stat;
+    speed.textContent = speedD.base_stat;
 
     data.types.forEach(type => {
         types.innerHTML += `<p class="type ${type.type.name}">${type.type.name}</p>`;
