@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useRef } from 'react'
+import { RawApiResponse, FilteredApiResponse, Stats, Types} from "../types/types.ts";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [pokemonData, setPokemonData] = useState<FilteredApiResponse | null>(null)
+    const inputRef = useRef<HTMLInputElement | null>(null)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const filterRelevantData = (data: RawApiResponse): FilteredApiResponse => {
+        return {
+            id: data.id,
+            name: data.name,
+            height: data.height,
+            weight: data.weight,
+            sprite: data.sprites.front_default,
+            stats: data.stats.map((stat: Stats):{name: string, baseStat: number} => ({
+                name: stat.stat.name,
+                baseStat: stat.base_stat,
+            })),
+            types: data.types.map((type: Types) => type.type.name),
+        }
+    }
+
+    const fetchData = async (input: string): Promise<void> => {
+        const res = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${input}`)
+        const data: RawApiResponse = await res.json()
+        setPokemonData(filterRelevantData(data))
+    }
+
+    const getRefValue = (ref) => {
+        return ref.current?.value
+    }
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            fetchData(getRefValue(inputRef)).then()
+        }
+    }
+
+    const handleClick = () => {
+        fetchData(getRefValue(inputRef)).then()
+    }
+
+    return (
+        <main>
+            <input ref={inputRef} type="text" onKeyDown={handleKeyDown}/>
+            <button onClick={handleClick}>Search</button>
+            <div>
+                {pokemonData ? JSON.stringify(pokemonData) : "none"}
+            </div>
+        </main>
+    )
 }
 
 export default App
