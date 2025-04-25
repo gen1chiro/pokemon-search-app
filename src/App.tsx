@@ -21,9 +21,13 @@ function App() {
     }
 
     const fetchData = async (input: string): Promise<void> => {
-        const res = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${input}`)
-        const data: RawApiResponse = await res.json()
-        setPokemonData(filterRelevantData(data))
+        try {
+            const res = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${input}`)
+            const data: RawApiResponse = await res.json()
+            setPokemonData(filterRelevantData(data))
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     const getRefValue = (ref) => {
