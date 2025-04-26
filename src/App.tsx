@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, {useState, useRef, RefObject} from 'react'
 import { RawApiResponse, FilteredApiResponse, Stats, Types} from './types/types.ts'
 import Default from './components/Default.tsx'
 import Pokemon from './components/Pokemon.tsx'
@@ -34,8 +34,8 @@ function App() {
         }
     }
 
-    const getRefValue = (ref): string => {
-        return ref.current?.value
+    const getRefValue = (ref: RefObject<HTMLInputElement | null>): string => {
+        return ref.current?.value ?? ''
     }
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
