@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { RawApiResponse, FilteredApiResponse, Stats, Types} from './types/types.ts'
 import Default from './components/Default.tsx'
+import Pokemon from './components/Pokemon.tsx'
 
 function App() {
     const [pokemonData, setPokemonData] = useState<FilteredApiResponse | null>(null)
@@ -28,10 +29,12 @@ function App() {
             setPokemonData(filterRelevantData(data))
         } catch (err) {
             console.error(err)
+            alert("Pokemon not found")
+            setPokemonData(null)
         }
     }
 
-    const getRefValue = (ref) => {
+    const getRefValue = (ref): string => {
         return ref.current?.value
     }
 
@@ -46,7 +49,7 @@ function App() {
     }
 
     return (
-        <main className="w-5/6 mx-auto mt-8 max-w-xl pt-8 pb-2 font-sans bg-gray-100 rounded-3xl shadow-lg">
+        <main className="w-5/6 mx-auto my-8 max-w-xl pt-4 pb-1 px-4 font-sans bg-gray-100 rounded-3xl shadow-lg">
             <section className="max-w-sm mx-auto flex items-center gap-2 border-1 p-1 bg-white shadow-lg border-white rounded-full">
                 <input ref={inputRef} type="text" onKeyDown={handleKeyDown}
                     className="flex-grow focus:outline-none px-3"
@@ -61,7 +64,7 @@ function App() {
                     </svg>
                 </button>
             </section>
-            {pokemonData ? JSON.stringify(pokemonData) : <Default/>}
+            {pokemonData ? <Pokemon pokemonData={pokemonData}/> : <Default/>}
         </main>
     )
 }
